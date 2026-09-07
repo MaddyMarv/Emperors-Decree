@@ -41,40 +41,40 @@ return {
 		en = "When switching operative from inside the Mourningstar, automatically reload into the hub with your newly decreed operative.",
 	},
 	keybind_decree_all = {
-		en = "Decree All Hotkey",
+		en = "Roll All Hotkey (Character & Loadout)",
 	},
 	keybind_decree_all_desc = {
-		en = "Hot-key to randomize both your operative and loadout preset.",
+		en = "Universal hotkey to randomize both your character and loadout preset in one press. In the Mourningstar, it switches your character, equips a random loadout, and automatically reloads the hub.",
 	},
 	keybind_reroll_character = {
-		en = "Reroll Operative Hotkey",
+		en = "Reroll Character Only Hotkey",
 	},
 	keybind_reroll_character_desc = {
-		en = "Hot-key to choose a new random operative at the Operative Selection screen.",
+		en = "Hotkey to randomize only your character (at the character selection screen or in the Mourningstar).",
 	},
 	allow_class_veteran = {
 		en = "Allow Veteran",
 	},
 	allow_class_veteran_desc = {
-		en = "Allow Veteran Sharpshooter operatives to be chosen.",
+		en = "Allow Veteran operatives to be chosen.",
 	},
 	allow_class_zealot = {
 		en = "Allow Zealot",
 	},
 	allow_class_zealot_desc = {
-		en = "Allow Zealot Preacher operatives to be chosen.",
+		en = "Allow Zealot operatives to be chosen.",
 	},
 	allow_class_psyker = {
 		en = "Allow Psyker",
 	},
 	allow_class_psyker_desc = {
-		en = "Allow Psyker Psykinetic operatives to be chosen.",
+		en = "Allow Psyker operatives to be chosen.",
 	},
 	allow_class_ogryn = {
 		en = "Allow Ogryn",
 	},
 	allow_class_ogryn_desc = {
-		en = "Allow Ogryn Skullbreaker operatives to be chosen.",
+		en = "Allow Ogryn operatives to be chosen.",
 	},
 	allow_class_hivescum = {
 		en = "Allow Hive Scum",
@@ -107,10 +107,10 @@ return {
 		en = "Automatically selects a random saved loadout preset when an operative is selected.",
 	},
 	keybind_reroll_loadout = {
-		en = "Reroll Loadout Hotkey",
+		en = "Reroll Loadout Only Hotkey",
 	},
 	keybind_reroll_loadout_desc = {
-		en = "Hot-key to switch to a random saved loadout preset in the Mourningstar or Psykhanium.",
+		en = "Hotkey to randomize only your saved loadout preset without changing your character (in the Mourningstar, Psykhanium, or Inventory).",
 	},
 	skip_empty_loadouts = {
 		en = "Skip Empty / Incomplete Loadouts",

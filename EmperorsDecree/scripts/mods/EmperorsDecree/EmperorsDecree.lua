@@ -11,8 +11,6 @@ local ARCHETYPE_DISPLAY_NAMES = {
 	broker = "HIVE SCUM",
 	adamant = "ADAMANT",
 	cryptic = "SKITARII",
-	skitarii = "SKITARII",
-	skitarius = "SKITARII",
 }
 
 local function _notify(text)
@@ -20,17 +18,12 @@ local function _notify(text)
 		return
 	end
 
-	local mmv = Managers.ui and Managers.ui:view_instance("main_menu_view")
-	local is_main_menu = mmv ~= nil or (Managers.state and Managers.state.game_mode == nil)
-
 	if mod:get("enable_notifications") then
 		mod:notify(text)
 	end
 
 	if mod:get("enable_chat_messages") then
-		if not is_main_menu or not mod:get("enable_notifications") then
-			mod:echo(text)
-		end
+		mod:echo(text)
 	end
 end
 
@@ -76,7 +69,7 @@ local function _is_profile_eligible(profile)
 		return mod:get("allow_class_hivescum")
 	elseif arch_name == "adamant" then
 		return mod:get("allow_class_adamant")
-	elseif arch_name == "cryptic" or arch_name == "skitarii" or arch_name == "skitarius" then
+	elseif arch_name == "cryptic" then
 		return mod:get("allow_class_skitarii")
 	end
 
@@ -188,33 +181,12 @@ mod:hook("StateMainMenu", "on_enter", function(func, self, parent, params, creat
 			params.selected_profile = chosen.profile
 
 			if mod:get("random_loadout_on_character_select") and chosen.profile.character_id then
-				local _, _, preset_name = _select_random_preset_for_character(chosen.profile.character_id)
-				mod._startup_chosen_preset_name = preset_name
+				_select_random_preset_for_character(chosen.profile.character_id)
 			end
-
-			mod._startup_chosen_profile = chosen.profile
 		end
 	end
 
 	func(self, parent, params, creation_context)
-end)
-
-mod:hook_safe("StateMainMenu", "event_main_menu_entered", function(self)
-	if mod._startup_chosen_profile then
-		local profile = mod._startup_chosen_profile
-		local preset_name = mod._startup_chosen_preset_name
-		mod._startup_chosen_profile = nil
-		mod._startup_chosen_preset_name = nil
-
-		local arch_title = _get_archetype_title(profile)
-		local level = profile.current_level or 0
-
-		if preset_name then
-			_notify(mod:localize("msg_decree_both", profile.name or "Operative", arch_title, level, preset_name))
-		else
-			_notify(mod:localize("msg_operative_decreed", profile.name or "Operative", arch_title, level))
-		end
-	end
 end)
 
 mod:hook("StateMainMenu", "update", function(func, self, dt, t)
