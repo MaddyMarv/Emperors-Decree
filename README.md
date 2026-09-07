@@ -1,4 +1,4 @@
-### [Emperor's Decree](https://www.nexusmods.com/warhammer40kdarktide/mods/)
+### [Emperor's Decree](https://www.nexusmods.com/games/warhammer40kdarktide/mods/1281)
 
 Randomly chooses an operative and a saved loadout preset according to the divine will of the God-Emperor of Mankind.
 
