@@ -13,17 +13,20 @@ local ARCHETYPE_DISPLAY_NAMES = {
 	cryptic = "SKITARII",
 }
 
-local function _notify(text)
+local function _notify(text, is_on_load)
 	if not text or text == "" then
 		return
 	end
 
-	if mod:get("enable_notifications") then
-		mod:notify(text)
+	local show_chat = mod:get("enable_chat_messages")
+	local show_notif = mod:get("enable_notifications")
+
+	if show_chat then
+		mod:echo(text)
 	end
 
-	if mod:get("enable_chat_messages") then
-		mod:echo(text)
+	if show_notif and not (is_on_load and show_chat) then
+		mod:notify(text)
 	end
 end
 
@@ -180,8 +183,18 @@ mod:hook("StateMainMenu", "on_enter", function(func, self, parent, params, creat
 			local chosen = math.random_array_entry(eligible)
 			params.selected_profile = chosen.profile
 
+			local preset_name = nil
 			if mod:get("random_loadout_on_character_select") and chosen.profile.character_id then
-				_select_random_preset_for_character(chosen.profile.character_id)
+				local _, _, name = _select_random_preset_for_character(chosen.profile.character_id)
+				preset_name = name
+			end
+
+			local arch_title = _get_archetype_title(chosen.profile)
+			local level = chosen.profile.current_level or 0
+			if preset_name then
+				_notify(mod:localize("msg_decree_both", chosen.profile.name or "Operative", arch_title, level, preset_name), true)
+			else
+				_notify(mod:localize("msg_operative_decreed", chosen.profile.name or "Operative", arch_title, level), true)
 			end
 		end
 	end
