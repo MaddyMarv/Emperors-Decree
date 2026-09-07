@@ -40,17 +40,11 @@ return {
 	auto_reload_hub_on_switch_desc = {
 		en = "When switching operative from inside the Mourningstar, automatically reload into the hub with your newly decreed operative.",
 	},
-	keybind_decree_all = {
-		en = "Roll All Hotkey (Character & Loadout)",
-	},
-	keybind_decree_all_desc = {
-		en = "Universal hotkey to randomize both your character and loadout preset in one press. In the Mourningstar, it switches your character, equips a random loadout, and automatically reloads the hub.",
-	},
 	keybind_reroll_character = {
-		en = "Reroll Character Only Hotkey",
+		en = "Reroll Operative Hotkey",
 	},
 	keybind_reroll_character_desc = {
-		en = "Hotkey to randomize only your character (at the character selection screen or in the Mourningstar).",
+		en = "Hotkey to randomize your operative (at character selection or from the Mourningstar).",
 	},
 	allow_class_veteran = {
 		en = "Allow Veteran",
@@ -101,22 +95,22 @@ return {
 		en = "Restricts operative selection strictly to characters at or over level 30.",
 	},
 	random_loadout_on_character_select = {
-		en = "Randomize Loadout on Operative Select",
+		en = "Also Randomize Saved Preset on Operative Reroll",
 	},
 	random_loadout_on_character_select_desc = {
-		en = "Automatically selects a random saved loadout preset when an operative is selected.",
+		en = "When an operative is decreed at startup or rerolled via hotkey, also randomly choose one of that operative's saved inventory loadout presets.",
 	},
 	keybind_reroll_loadout = {
-		en = "Reroll Loadout Only Hotkey",
+		en = "Reroll Saved Loadout Preset Hotkey",
 	},
 	keybind_reroll_loadout_desc = {
-		en = "Hotkey to randomize only your saved loadout preset without changing your character (in the Mourningstar, Psykhanium, or Inventory).",
+		en = "Hotkey to randomize only your active saved loadout preset without changing characters (in the Mourningstar, Psykhanium, or Inventory).",
 	},
 	skip_empty_loadouts = {
-		en = "Skip Empty / Incomplete Loadouts",
+		en = "Skip Empty / Incomplete Loadout Presets",
 	},
 	skip_empty_loadouts_desc = {
-		en = "Excludes saved loadouts that do not have equipment or talent trees configured.",
+		en = "Excludes saved preset slots that have no equipment or talent trees configured.",
 	},
 	enable_notifications = {
 		en = "Show On-Screen Notifications",
@@ -161,6 +155,6 @@ return {
 		en = "The Emperor's Decree: Randomize operative or saved loadout preset.",
 	},
 	cmd_decree_help = {
-		en = "Emperor's Decree Commands:\n- /decree (alts: all, roll, random) : Randomize operative & loadout\n- /decree operative (alts: character, class, op) : Randomize operative\n- /decree loadout (alts: preset, build) : Randomize loadout preset\n- /decree help : Show available commands",
+		en = "Emperor's Decree Commands:\n- /decree : Reroll operative (and loadout preset if enabled)\n- /decree loadout : Reroll saved loadout preset only\n- /decree help : Show available commands",
 	},
 }

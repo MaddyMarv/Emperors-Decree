@@ -8,8 +8,7 @@ Randomly chooses an operative and a saved loadout preset according to the divine
 - Randomize Operative on Start
 - Auto-Reload Mourningstar on Switch
 - Over Level 30 Characters Only
-- Roll All (Character & Loadout) (Hotkey)
-- Reroll Character (Hotkey)
+- Reroll Operative (Hotkey)
 
 **Allowed Operative Classes**
 - Allow Veteran
@@ -21,18 +20,17 @@ Randomly chooses an operative and a saved loadout preset according to the divine
 - Allow Skitarii
 
 **Loadout Decrees**
-- Randomize Loadout on Operative Select
-- Skip Empty / Incomplete Loadouts
-- Reroll Loadout (Hotkey)
+- Also Randomize Saved Preset on Operative Reroll
+- Skip Empty / Incomplete Loadout Presets
+- Reroll Saved Loadout Preset (Hotkey)
 
 **Decree Notifications**
 - Show On-Screen Notifications
 - Show Chat Messages
 
 **Chat Commands:**
-- `/decree` (or `/decree all`, `/decree roll`, `/decree random`) 
-- `/decree operative` (or `/decree character`, `/decree class`, `/decree op`) 
-- `/decree loadout` (or `/decree preset`, `/decree build`) 
+- `/decree`
+- `/decree loadout`
 - `/decree help` 
 
 🔗 **Links:** [Source Code](https://github.com/MaddyMarv/Emperors-Decree) | [Nexus Mods Profile](https://www.nexusmods.com/profile/indicabunny) | [Support Me on Ko-fi](https://ko-fi.com/indicabunny)

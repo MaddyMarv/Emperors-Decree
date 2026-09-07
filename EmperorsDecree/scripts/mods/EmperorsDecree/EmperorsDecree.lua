@@ -18,14 +18,18 @@ local function _notify(text, is_on_load)
 		return
 	end
 
+	local is_main_menu = is_on_load or (Managers.ui and Managers.ui:view_instance("main_menu_view") ~= nil)
+	local gm_name = Managers.state and Managers.state.game_mode and Managers.state.game_mode:game_mode_name()
+	local is_in_game = gm_name ~= nil and not is_main_menu
+
 	local show_chat = mod:get("enable_chat_messages")
 	local show_notif = mod:get("enable_notifications")
 
-	if show_chat then
+	if show_chat and is_in_game then
 		mod:echo(text)
 	end
 
-	if show_notif and not (is_on_load and show_chat) then
+	if show_notif then
 		mod:notify(text)
 	end
 end
@@ -393,32 +397,13 @@ mod.reroll_loadout = function()
 	_notify(mod:localize("msg_cannot_switch_loadout_here"))
 end
 
-mod.decree_all = function()
-	local mmv = Managers.ui and Managers.ui:view_instance("main_menu_view")
-	if mmv then
-		mod.reroll_operative()
-		return
-	end
-
-	local gm_name = Managers.state and Managers.state.game_mode and Managers.state.game_mode:game_mode_name()
-	local is_hub = gm_name and (gm_name == "hub" or gm_name == "hub_singleplay" or gm_name == "shooting_range")
-
-	if is_hub and mod:get("auto_reload_hub_on_switch") then
-		mod.reroll_operative()
-	else
-		mod.reroll_loadout()
-	end
-end
-
 mod:command("decree", mod:localize("cmd_decree_desc"), function(...)
 	local args = { ... }
 	local subcmd = args[1] and string.lower(args[1]) or nil
 
-	if not subcmd or subcmd == "all" or subcmd == "roll" or subcmd == "random" or subcmd == "both" then
-		mod.decree_all()
-	elseif subcmd == "operative" or subcmd == "character" or subcmd == "class" or subcmd == "op" or subcmd == "char" then
+	if not subcmd then
 		mod.reroll_operative()
-	elseif subcmd == "loadout" or subcmd == "preset" or subcmd == "build" then
+	elseif subcmd == "loadout" then
 		mod.reroll_loadout()
 	elseif subcmd == "help" then
 		mod:echo(mod:localize("cmd_decree_help"))

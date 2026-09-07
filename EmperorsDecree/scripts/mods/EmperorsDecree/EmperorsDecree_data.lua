@@ -27,15 +27,6 @@ return {
 						default_value = false,
 					},
 					{
-						setting_id = "keybind_decree_all",
-						type = "keybind",
-						default_value = {},
-						keybind_global = true,
-						keybind_trigger = "pressed",
-						keybind_type = "function_call",
-						function_name = "decree_all",
-					},
-					{
 						setting_id = "keybind_reroll_character",
 						type = "keybind",
 						default_value = {},
