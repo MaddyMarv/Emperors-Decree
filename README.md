@@ -30,9 +30,9 @@ Randomly chooses an operative and a saved loadout preset according to the divine
 - Show Chat Messages
 
 **Chat Commands:**
-- `/decree` (or `/decree all`, `/decree roll`, `/decree random`) - Randomizes your operative and loadout (auto-reloading into the hub if in Mourningstar).
-- `/decree operative` (or `/decree character`, `/decree class`, `/decree op`) - Rerolls your operative.
-- `/decree loadout` (or `/decree preset`, `/decree build`) - Rerolls your active loadout preset.
-- `/decree help` - Displays available commands in chat.
+- `/decree` (or `/decree all`, `/decree roll`, `/decree random`) 
+- `/decree operative` (or `/decree character`, `/decree class`, `/decree op`) 
+- `/decree loadout` (or `/decree preset`, `/decree build`) 
+- `/decree help` 
 
 🔗 **Links:** [Source Code](https://github.com/MaddyMarv/Emperors-Decree) | [Nexus Mods Profile](https://www.nexusmods.com/profile/indicabunny) | [Support Me on Ko-fi](https://ko-fi.com/indicabunny)
