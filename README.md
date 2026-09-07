@@ -8,8 +8,8 @@ Randomly chooses an operative and a saved loadout preset according to the divine
 - Randomize Operative on Start
 - Auto-Reload Mourningstar on Switch
 - Over Level 30 Characters Only
-- Decree All (Hotkey)
-- Reroll Operative (Hotkey)
+- Roll All (Character & Loadout) (Hotkey)
+- Reroll Character (Hotkey)
 
 **Allowed Operative Classes**
 - Allow Veteran
