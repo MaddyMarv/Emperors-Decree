@@ -1,0 +1,35 @@
+﻿Randomly chooses an operative and a saved loadout preset according to the divine will of the God-Emperor of Mankind.
+
+[b]Options:[/b]
+
+[b]Operative Decrees[/b]
+- Randomize Operative on Start
+- Auto-Reload Mourningstar on Switch
+- Over Level 30 Characters Only
+- Reroll Operative (Hotkey)
+
+[b]Allowed Operative Classes[/b]
+- Allow Veteran
+- Allow Zealot
+- Allow Psyker
+- Allow Ogryn
+- Allow Hive Scum
+- Allow Adamant
+- Allow Skitarii
+
+[b]Loadout Decrees[/b]
+- Also Randomize Saved Preset on Operative Reroll
+- Skip Empty / Incomplete Loadout Presets
+- Reroll Saved Loadout Preset (Hotkey)
+
+[b]Decree Notifications[/b]
+- Show On-Screen Notifications
+- Show Chat Messages
+
+[b]Chat Commands:[/b]
+- /decree
+- /decree loadout
+- /decree help
+
+[b]Links:[/b]
+[url=https://github.com/MaddyMarv/Emperors-Decree]Source Code[/url] | [url=https://www.nexusmods.com/profile/indicabunny]Nexus Mods Profile[/url] | [url=https://ko-fi.com/indicabunny]Support Me on Ko-fi[/url]
