@@ -186,14 +186,16 @@ mod:hook("StateMainMenu", "on_enter", function(func, self, parent, params, creat
 		end
 	end
 
-	func(self, parent, params, creation_context)
+	return func(self, parent, params, creation_context)
 end)
 
-mod:hook("StateMainMenu", "update", function(func, self, dt, t)
-	func(self, dt, t)
-
+mod:hook_safe("StateMainMenu", "update", function(self, dt, t)
 	if mod._auto_reenter_hub then
-		local profiles_syncing, character_syncing = self:waiting_for_profile_synchronization()
+		local profiles_syncing, character_syncing = false, false
+		if self.waiting_for_profile_synchronization then
+			profiles_syncing, character_syncing = self:waiting_for_profile_synchronization()
+		end
+
 		if not profiles_syncing and not character_syncing then
 			mod._auto_reenter_hub = nil
 			Managers.event:trigger("event_state_main_menu_continue")
