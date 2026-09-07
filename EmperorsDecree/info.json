@@ -1,0 +1,17 @@
+{
+    "name": "Emperor's Decree",
+    "author": "IndicaBunny",
+    "version": "1.0",
+    "homepage": "https://www.nexusmods.com/warhammer40kdarktide/mods/",
+    "source": "https://github.com/MaddyMarv/Emperors-Decree",
+    "funding": {
+        "kofi": "https://ko-fi.com/indicabunny"
+    },
+    "description": "Randomly chooses an operative and a saved loadout preset according to the divine will of the God-Emperor of Mankind.",
+    "dependencies": {
+        "required": [],
+        "self_after": [],
+        "self_before": []
+    },
+    "localization": {}
+}
