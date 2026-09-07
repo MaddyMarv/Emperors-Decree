@@ -43,6 +43,15 @@ local function _get_archetype_title(profile)
 	return string.upper(arch_name)
 end
 
+local function _get_level_string(profile)
+	local level = profile and profile.current_level or 0
+	if level >= 30 then
+		return "30+"
+	end
+
+	return tostring(level)
+end
+
 local function _is_profile_eligible(profile)
 	if not profile then
 		return false
@@ -190,11 +199,11 @@ mod:hook("StateMainMenu", "on_enter", function(func, self, parent, params, creat
 			end
 
 			local arch_title = _get_archetype_title(chosen.profile)
-			local level = chosen.profile.current_level or 0
+			local level_str = _get_level_string(chosen.profile)
 			if preset_name then
-				_notify(mod:localize("msg_decree_both", chosen.profile.name or "Operative", arch_title, level, preset_name), true)
+				_notify(mod:localize("msg_decree_both", chosen.profile.name or "Operative", arch_title, level_str, preset_name), true)
 			else
-				_notify(mod:localize("msg_operative_decreed", chosen.profile.name or "Operative", arch_title, level), true)
+				_notify(mod:localize("msg_operative_decreed", chosen.profile.name or "Operative", arch_title, level_str), true)
 			end
 		end
 	end
@@ -223,10 +232,12 @@ local function _switch_operative_from_hub(target_character_id, chosen_profile)
 		preset_name = name
 	end
 
+	local arch_title = _get_archetype_title(chosen_profile)
+	local level_str = _get_level_string(chosen_profile)
 	if preset_name then
-		_notify(mod:localize("msg_redeploying_with_loadout", chosen_profile.name or "Operative", _get_archetype_title(chosen_profile), chosen_profile.current_level or 0, preset_name))
+		_notify(mod:localize("msg_redeploying_with_loadout", chosen_profile.name or "Operative", arch_title, level_str, preset_name))
 	else
-		_notify(mod:localize("msg_redeploying", chosen_profile.name or "Operative", _get_archetype_title(chosen_profile), chosen_profile.current_level or 0))
+		_notify(mod:localize("msg_redeploying", chosen_profile.name or "Operative", arch_title, level_str))
 	end
 
 	local account_service = Managers.data_service and Managers.data_service.account
@@ -268,7 +279,7 @@ mod.reroll_operative = function()
 
 		local profile = chosen.profile
 		local arch_title = _get_archetype_title(profile)
-		local level = profile.current_level or 0
+		local level_str = _get_level_string(profile)
 
 		local preset_name = nil
 		if mod:get("random_loadout_on_character_select") and profile.character_id then
@@ -277,9 +288,9 @@ mod.reroll_operative = function()
 		end
 
 		if preset_name then
-			_notify(mod:localize("msg_decree_both", profile.name or "Operative", arch_title, level, preset_name))
+			_notify(mod:localize("msg_decree_both", profile.name or "Operative", arch_title, level_str, preset_name))
 		else
-			_notify(mod:localize("msg_operative_decreed", profile.name or "Operative", arch_title, level))
+			_notify(mod:localize("msg_operative_decreed", profile.name or "Operative", arch_title, level_str))
 		end
 		return
 	end

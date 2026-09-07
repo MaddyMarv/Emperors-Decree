@@ -134,10 +134,10 @@ return {
 		en = "The Emperor finds no operatives fitting your decreed filters!",
 	},
 	msg_operative_decreed = {
-		en = "By the Emperor's Decree: Deploying as %s (%s, Lvl %d).",
+		en = "By the Emperor's Decree: Deploying as %s (%s, Lvl %s).",
 	},
 	msg_decree_both = {
-		en = "By the Emperor's Decree: %s (%s, Lvl %d) with Loadout '%s'.",
+		en = "By the Emperor's Decree: %s (%s, Lvl %s) with Loadout '%s'.",
 	},
 	msg_loadout_decreed = {
 		en = "By the Emperor's Decree: Loadout '%s' assigned.",
@@ -146,10 +146,10 @@ return {
 		en = "No saved loadouts found for this operative!",
 	},
 	msg_redeploying = {
-		en = "By the Emperor's Decree: Redeploying to Mourningstar as %s (%s, Lvl %d)...",
+		en = "By the Emperor's Decree: Redeploying to Mourningstar as %s (%s, Lvl %s)...",
 	},
 	msg_redeploying_with_loadout = {
-		en = "By the Emperor's Decree: Redeploying to Mourningstar as %s (%s, Lvl %d) with Loadout '%s'...",
+		en = "By the Emperor's Decree: Redeploying to Mourningstar as %s (%s, Lvl %s) with Loadout '%s'...",
 	},
 	msg_cannot_switch_operative_here = {
 		en = "Return to Operative Selection to change your deployed operative.",
