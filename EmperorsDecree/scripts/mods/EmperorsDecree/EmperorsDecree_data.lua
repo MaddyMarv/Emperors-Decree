@@ -14,7 +14,7 @@ return {
 					{
 						setting_id = "random_character_on_startup",
 						type = "checkbox",
-						default_value = true,
+						default_value = false,
 						tooltip = "random_character_on_startup_description",
 					},
 					{
@@ -26,7 +26,7 @@ return {
 					{
 						setting_id = "filter_max_level_only",
 						type = "checkbox",
-						default_value = false,
+						default_value = true,
 						tooltip = "filter_max_level_only_description",
 					},
 					{
