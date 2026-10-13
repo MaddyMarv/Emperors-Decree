@@ -29,9 +29,9 @@ Randomly chooses an operative and a saved loadout preset according to the divine
 - Show On-Screen Notifications
 - Show Chat Messages
 
-**Chat Commands:**
-- `/decree`
-- `/decree loadout`
-- `/decree help` 
+**Commands:**
+- `/decree` - Reroll operative (and loadout preset if enabled)
+- `/decree loadout` - Reroll saved loadout preset only
+- `/decree help` - Show available commands 
 
 🔗 **Links:** [Source Code](https://github.com/MaddyMarv/Emperors-Decree) | [Nexus Mods Profile](https://www.nexusmods.com/profile/indicabunny) | [Support Me on Ko-fi](https://ko-fi.com/indicabunny)
