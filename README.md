@@ -3,7 +3,8 @@
 
 Randomly chooses an operative and a saved loadout preset according to the divine will of the God-Emperor of Mankind.
 
-**Options:**
+<details>
+<summary><b>Mod Settings / Commands</b></summary>
 
 **Operative Decrees**
 - Randomize Operative on Start
@@ -32,6 +33,7 @@ Randomly chooses an operative and a saved loadout preset according to the divine
 **Commands:**
 - `/decree` - Reroll operative (and loadout preset if enabled)
 - `/decree loadout` - Reroll saved loadout preset only
-- `/decree help` - Show available commands 
+- `/decree help` - Show available commands
+</details>
 
 🔗 **Links:** [Source Code](https://github.com/MaddyMarv/Emperors-Decree) | [Nexus Mods Profile](https://www.nexusmods.com/profile/indicabunny) | [Support Me on Ko-fi](https://ko-fi.com/indicabunny)
