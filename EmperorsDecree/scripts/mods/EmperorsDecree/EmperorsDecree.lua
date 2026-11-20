@@ -205,9 +205,21 @@ mod:hook("StateMainMenu", "on_enter", function(func, self, parent, params, creat
 			local arch_title = _get_archetype_title(chosen.profile)
 			local level_str = _get_level_string(chosen.profile)
 			if preset_name then
-				_notify(mod:localize("msg_decree_both", chosen.profile.name or "Operative", arch_title, level_str, preset_name), true)
+				_notify(
+					mod:localize(
+						"msg_decree_both",
+						chosen.profile.name or "Operative",
+						arch_title,
+						level_str,
+						preset_name
+					),
+					true
+				)
 			else
-				_notify(mod:localize("msg_operative_decreed", chosen.profile.name or "Operative", arch_title, level_str), true)
+				_notify(
+					mod:localize("msg_operative_decreed", chosen.profile.name or "Operative", arch_title, level_str),
+					true
+				)
 			end
 		end
 	end
@@ -239,7 +251,15 @@ local function _switch_operative_from_hub(target_character_id, chosen_profile)
 	local arch_title = _get_archetype_title(chosen_profile)
 	local level_str = _get_level_string(chosen_profile)
 	if preset_name then
-		_notify(mod:localize("msg_redeploying_with_loadout", chosen_profile.name or "Operative", arch_title, level_str, preset_name))
+		_notify(
+			mod:localize(
+				"msg_redeploying_with_loadout",
+				chosen_profile.name or "Operative",
+				arch_title,
+				level_str,
+				preset_name
+			)
+		)
 	else
 		_notify(mod:localize("msg_redeploying", chosen_profile.name or "Operative", arch_title, level_str))
 	end
