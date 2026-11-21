@@ -1,5 +1,3 @@
-local mod = get_mod("EmperorsDecree")
-
 return {
 	mod_name = {
 		en = "Emperor's Decree",

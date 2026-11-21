@@ -381,7 +381,7 @@ mod.reroll_loadout = function()
 	local mmv = Managers.ui and Managers.ui:view_instance("main_menu_view")
 	if mmv and mmv._selected_profile then
 		local character_id = mmv._selected_profile.character_id
-		local preset, _, name = _select_random_preset_for_character(character_id)
+		local _, _, name = _select_random_preset_for_character(character_id)
 		if name then
 			_notify(mod:localize("msg_loadout_decreed", name))
 		else
