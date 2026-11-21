@@ -2,6 +2,7 @@ local mod = get_mod("EmperorsDecree")
 
 local ItemUtils = require("scripts/utilities/items")
 local ProfileUtils = require("scripts/utilities/profile_utils")
+local Promise = require("scripts/foundation/utilities/promise")
 
 local ARCHETYPE_DISPLAY_NAMES = {
 	veteran = "VETERAN",
@@ -130,6 +131,21 @@ local function _get_preset_name(preset, index)
 	return string.format("Loadout #%d", index or 1)
 end
 
+local function _equip_preset_gear(character_id, preset)
+	local profiles_service = Managers.data_service and Managers.data_service.profiles
+	if
+		not character_id
+		or not preset
+		or not preset.loadout
+		or table.is_empty(preset.loadout)
+		or not profiles_service
+	then
+		return Promise.resolved()
+	end
+
+	return profiles_service:equip_items_in_slots(character_id, preset.loadout, {})
+end
+
 local function _select_random_preset_for_character(character_id)
 	if not character_id then
 		return nil, nil, nil
@@ -198,7 +214,8 @@ mod:hook("StateMainMenu", "on_enter", function(func, self, parent, params, creat
 
 			local preset_name = nil
 			if mod:get("random_loadout_on_character_select") and chosen.profile.character_id then
-				local _, _, name = _select_random_preset_for_character(chosen.profile.character_id)
+				local preset, _, name = _select_random_preset_for_character(chosen.profile.character_id)
+				_equip_preset_gear(chosen.profile.character_id, preset)
 				preset_name = name
 			end
 
@@ -243,9 +260,11 @@ end)
 
 local function _switch_operative_from_hub(target_character_id, chosen_profile)
 	local preset_name = nil
+	local equip_promise = nil
 	if mod:get("random_loadout_on_character_select") and target_character_id then
-		local _, _, name = _select_random_preset_for_character(target_character_id)
+		local preset, _, name = _select_random_preset_for_character(target_character_id)
 		preset_name = name
+		equip_promise = _equip_preset_gear(target_character_id, preset)
 	end
 
 	local arch_title = _get_archetype_title(chosen_profile)
@@ -266,15 +285,20 @@ local function _switch_operative_from_hub(target_character_id, chosen_profile)
 
 	local account_service = Managers.data_service and Managers.data_service.account
 	if account_service and account_service.set_selected_character_id then
-		account_service:set_selected_character_id(target_character_id):next(function()
-			mod._auto_reenter_hub = true
-			if Managers.ui and Managers.ui:view_active("system_view") then
-				Managers.ui:close_view("system_view")
-			end
-			if Managers.multiplayer_session and Managers.multiplayer_session.leave then
-				Managers.multiplayer_session:leave("exit_to_main_menu")
-			end
-		end)
+		(equip_promise or Promise.resolved())
+			:catch(function() end)
+			:next(function()
+				return account_service:set_selected_character_id(target_character_id)
+			end)
+			:next(function()
+				mod._auto_reenter_hub = true
+				if Managers.ui and Managers.ui:view_active("system_view") then
+					Managers.ui:close_view("system_view")
+				end
+				if Managers.multiplayer_session and Managers.multiplayer_session.leave then
+					Managers.multiplayer_session:leave("exit_to_main_menu")
+				end
+			end)
 	end
 end
 
@@ -307,7 +331,8 @@ mod.reroll_operative = function()
 
 		local preset_name = nil
 		if mod:get("random_loadout_on_character_select") and profile.character_id then
-			local _, _, name = _select_random_preset_for_character(profile.character_id)
+			local preset, _, name = _select_random_preset_for_character(profile.character_id)
+			_equip_preset_gear(profile.character_id, preset)
 			preset_name = name
 		end
 
@@ -381,7 +406,8 @@ mod.reroll_loadout = function()
 	local mmv = Managers.ui and Managers.ui:view_instance("main_menu_view")
 	if mmv and mmv._selected_profile then
 		local character_id = mmv._selected_profile.character_id
-		local _, _, name = _select_random_preset_for_character(character_id)
+		local preset, _, name = _select_random_preset_for_character(character_id)
+		_equip_preset_gear(character_id, preset)
 		if name then
 			_notify(mod:localize("msg_loadout_decreed", name))
 		else
