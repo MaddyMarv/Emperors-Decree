@@ -11,8 +11,6 @@ Randomly chooses an operative and a saved loadout preset according to the divine
 - Auto-Reload Mourningstar on Switch
 - Over Level 30 Characters Only
 - Reroll Operative (Hotkey)
-
-**Allowed Operative Classes**
 - Allow Veteran
 - Allow Zealot
 - Allow Psyker
